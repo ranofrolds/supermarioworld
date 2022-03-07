@@ -13,4 +13,13 @@ public class Adjacente {
             listaAdj[i]=new LinkedList<Integer>();
         }
     }
+
+    public void adicionarAdjacente(int i, int j){
+        listaAdj[i].add(j);
+    } 
+
+    public LinkedList<Integer>[] getListaAdj(){
+
+        return this.listaAdj;
+    }
 }

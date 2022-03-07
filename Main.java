@@ -1,5 +1,6 @@
 import java.util.Scanner;
 
+import algoritmos.BuscaEmLargura;
 import grafo.Grafo;
 import other.Inputs;
 
@@ -26,6 +27,7 @@ public class Main{
         Inputs inpt=new Inputs();
         char aux;
         String path;
+        
 
         System.out.println("Bem vindo!\nJa existe um arquivo de Matriz Adjacente? S/N?");
         aux=sc.nextLine().charAt(0);
@@ -70,11 +72,12 @@ public class Main{
             System.out.println();
         }
         Grafo G = new Grafo(N, matAdj);
-        
+        BuscaEmLargura bel= new BuscaEmLargura(0, N, (G.getAdj()).getListaAdj());
+
+
         // G.adicionarMatrizAdj(matAdj);
 
 
-        
         
         sc.close();
     }
