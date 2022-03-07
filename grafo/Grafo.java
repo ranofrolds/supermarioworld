@@ -1,3 +1,4 @@
+package grafo;
 public class Grafo {
     Vertice vertices[];
     Adjacente adj;

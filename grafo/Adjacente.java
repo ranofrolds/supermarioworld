@@ -1,3 +1,4 @@
+package grafo;
 import java.util.*;
 
 public class Adjacente {
