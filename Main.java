@@ -1,8 +1,11 @@
+import java.util.LinkedList;
 import java.util.Scanner;
 
 import algoritmos.BuscaEmLargura;
-import grafo.Grafo;
+import algoritmos.BuscaEmProfundidade;
+import grafo.*;
 import other.Inputs;
+import tree.Arvore;
 
 import java.io.IOException;
 import java.io.File;
@@ -13,14 +16,14 @@ import java.io.File;
 53- 56 Switch Palace
 57- 65 Castelos
 66- 71 Ghost House
-72- 76 Fortress
-77- 88 Canos
-89- 96 Estrelas
+72- 75 Fortress  
+76- 87 Canos : 76->77|78->79|80->81|82->83|84->85|86->87|
+88- 94 Estrelas
 */
 
 public class Main{
     public static void main(String argc[]) throws IOException{
-        int N=3;
+        int N=96;
         //CRIAR MATRIZ E PEGAR VALOR*
         int matAdj[][]=new int[N][N];
         Scanner sc=new Scanner(System.in);
@@ -73,11 +76,25 @@ public class Main{
         }
         Grafo G = new Grafo(N, matAdj);
         BuscaEmLargura bel= new BuscaEmLargura(0, N, (G.getAdj()).getListaAdj());
+        Arvore tree= new Arvore(N);
+        bel.bfs(tree);
+        tree.percorrerArvore(tree.getverticeIncial(0));
 
+        System.out.println("\n\n\n\n");
 
+        BuscaEmProfundidade bfp = new BuscaEmProfundidade(G, N);
+        Arvore tree2=new Arvore(N);
+        LinkedList<Vertice> topologia= new LinkedList<>();
+        topologia=bfp.BFP(tree2);
+
+        tree2.percorrerArvore(tree2.getverticeIncial(0));
         // G.adicionarMatrizAdj(matAdj);
 
-
+        System.out.println("\n\n\n\nPrintando Ordem Topologica: ");
+        
+        for (Vertice vertice : topologia) {
+            System.out.print(vertice.getValor()+"-");
+        }
         
         sc.close();
     }

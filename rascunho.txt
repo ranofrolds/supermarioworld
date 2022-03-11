@@ -29,7 +29,7 @@ public class BuscaEmProfundidade {
         for (Vertice v : grafo.getVertice()) {
             No origem=new No(v.getValor());
             tree.setverticeIncial(origem,origem.getN());
-            bfpVisit(v,origem, topo);
+            bfpVisit(v,origem, topo, null, origem.getN());
 
         }
 
@@ -38,18 +38,18 @@ public class BuscaEmProfundidade {
         return topo;
     }
 
-    public void bfpVisit(Vertice v, No no, LinkedList<Vertice> topo ) {
+    public void bfpVisit(Vertice v, No no, LinkedList<Vertice> topo,Vertice anterior, int origem ) {
         tempo++;
         v.setTempoInicial(tempo);
         v.setCor("cinza");
         LinkedList<Integer> u[] = grafo.getAdj().getListaAdj();
         for (Integer a : u[v.getValor()]) {
-            if (conhecido[a] == false && vertices[a].getCor()=="branco") { 
+            if (conhecido[a] == false && !fimCiclo(v,a,anterior, origem, vertices[a].getCor())) { 
                     
                     grafo.getVertice()[a].setPai(v);
                     No novo = new No(a);
                     no.addFilho(novo);
-                    bfpVisit(grafo.getVertice()[a], novo, topo);
+                    bfpVisit(grafo.getVertice()[a], novo, topo, v, origem);
  
             }
         }
@@ -60,9 +60,24 @@ public class BuscaEmProfundidade {
         
         tempo++;
         v.setTempoFinal(tempo);
-        v.setCor("preto");
     }
 
-   
+    public boolean fimCiclo(Vertice v, int prox, Vertice anterior, int origem, String cor){
+        if(anterior==null){
+            return false;
+        }
+        else if(anterior.getValor()==prox){
+            return true;
+        }
+        else if(prox==origem){
+            return true;
+        }
+        else if(cor=="cinza"){
+            return true;
+        }
+            
+        return false;
+
+    }
 
 }

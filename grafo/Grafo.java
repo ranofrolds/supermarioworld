@@ -1,37 +1,41 @@
 package grafo;
+
 public class Grafo {
     Vertice vertices[];
     Adjacente adj;
     int numVet;
 
-    public Grafo(int n, int[][] matAdj){
-        this.numVet=n;
-        this.adj=new Adjacente(this.numVet, matAdj);
+    public Grafo(int n, int[][] matAdj) {
+        this.numVet = n;
+        this.adj = new Adjacente(this.numVet, matAdj);
 
-        this.vertices=new Vertice[n];
-        for(int i=0; i<this.numVet;i++){
-            vertices[i]= new Vertice(i);
+        this.vertices = new Vertice[n];
+        for (int i = 0; i < this.numVet; i++) {
+            vertices[i] = new Vertice(i);
         }
 
-        for(int i=0; i<n;i++){
-            for(int j=0; j<n; j++){
-                if(matAdj[i][j]==1){
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                if (matAdj[i][j] == 1) {
                     adicionarArestas(i, j);
-                    adj.adicionarAdjacente(i,j);
+                    adj.adicionarAdjacente(i, j);
                 }
             }
         }
     }
 
-    public void adicionarArestas(int u, int v){
-        Vertice vertV=vertices[v];
+    public void adicionarArestas(int u, int v) {
+        Vertice vertV = vertices[v];
         vertices[u].novaAresta(vertices[u], vertV);
         // adj.matrizAdj[u][v]=1;
     }
 
-    public Adjacente getAdj(){
+    public Adjacente getAdj() {
         return this.adj;
     }
 
-    
+    public Vertice[] getVertice() {
+        return this.vertices;
+    }
+
 }

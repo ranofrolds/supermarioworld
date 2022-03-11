@@ -21,7 +21,7 @@ public class Inputs {
         BufferedWriter buffer = new BufferedWriter(arq);
         Scanner sc= new Scanner(System.in);
         
-        int row[]=new int[N];
+        int row[]=new int[N+1];
 
         for(int i=0; i<N; i++){
             if(i==0){
@@ -33,19 +33,19 @@ public class Inputs {
                
             }
             else if(i>52 && i<57){
-                System.out.println("Quantos vertices o SwitchPalace "+(i-(i-1))+" é ligada?");
+                System.out.println("Quantos vertices o SwitchPalace "+(i)+" é ligada?");
                 
             }
             else if(i>56 && i<66){
-                System.out.println("Quantos vertices o Castelo "+(i-(i-1))+" é ligada?");
+                System.out.println("Quantos vertices o Castelo "+(i)+" é ligada?");
                 
             }
             else if(i>65 && i<72){
-                System.out.println("Quantos vertices o Ghosthouse "+(i-(i-1))+" é ligada?");
+                System.out.println("Quantos vertices o Ghosthouse "+(i)+" é ligada?");
                 
             }
             else if(i>71 && i<77){
-                System.out.println("Quantos vertices o Fortress "+(i-(i-1))+" é ligada?");
+                System.out.println("Quantos vertices o Fortress "+(i)+" é ligada?");
                 
             }
             else if(i>77 && i<89){
