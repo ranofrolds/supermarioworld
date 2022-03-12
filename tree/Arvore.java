@@ -1,7 +1,5 @@
 package tree;
 
-import java.util.ArrayList;
-
 public class Arvore {
 
     No verticeIncial[];
@@ -30,4 +28,22 @@ public class Arvore {
             percorrerArvore(filho);
         }
     }
+
+    public No findNo(No no, int n){
+        No aux=null;
+        for (No filho : no.getFilhos()) {
+            
+            if(filho.getN()== n){
+                aux=filho;
+                return aux;
+            }
+            
+            aux=findNo(filho, n);
+            if(aux!=null){
+                break;
+            }
+        }
+        return aux;
+    }
+
 }

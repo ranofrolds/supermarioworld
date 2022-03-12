@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 public class No{
     int n;
+    No anterior;
     ArrayList<No> filhos;
 
     public No(int n){
@@ -19,7 +20,15 @@ public class No{
         return this.n;
     }
 
+    public void setAnterior(No anterior){
+        this.anterior = anterior;
+    }
+
     public ArrayList<No> getFilhos(){
         return this.filhos;
+    }
+
+    public No getAnterior(){
+        return this.anterior;
     }
 }

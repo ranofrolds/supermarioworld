@@ -17,18 +17,13 @@ public class Grafo {
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
                 if (matAdj[i][j] == 1) {
-                    adicionarArestas(i, j);
                     adj.adicionarAdjacente(i, j);
                 }
             }
         }
     }
 
-    public void adicionarArestas(int u, int v) {
-        Vertice vertV = vertices[v];
-        vertices[u].novaAresta(vertices[u], vertV);
-        // adj.matrizAdj[u][v]=1;
-    }
+
 
     public Adjacente getAdj() {
         return this.adj;

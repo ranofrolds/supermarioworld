@@ -1,8 +1,10 @@
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Scanner;
 
 import algoritmos.BuscaEmLargura;
 import algoritmos.BuscaEmProfundidade;
+import algoritmos.MenorCaminho;
 import grafo.*;
 import other.Inputs;
 import tree.Arvore;
@@ -23,7 +25,7 @@ import java.io.File;
 
 public class Main{
     public static void main(String argc[]) throws IOException{
-        int N=96;
+        int N=6;
         //CRIAR MATRIZ E PEGAR VALOR*
         int matAdj[][]=new int[N][N];
         Scanner sc=new Scanner(System.in);
@@ -79,6 +81,14 @@ public class Main{
         Arvore tree= new Arvore(N);
         bel.bfs(tree);
         tree.percorrerArvore(tree.getverticeIncial(0));
+        MenorCaminho retorno= new MenorCaminho(tree);
+        int fim=4;
+        System.out.println("Menor Caminho para "+fim+":");
+        ArrayList<Integer> percurso=retorno.calcular(0,fim);
+
+        for (Integer i : percurso) {
+            System.out.print(i+"-");
+        }
 
         System.out.println("\n\n\n\n");
 

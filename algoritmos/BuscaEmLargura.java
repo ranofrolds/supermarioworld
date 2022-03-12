@@ -35,6 +35,7 @@ public class BuscaEmLargura {
         while(!fila.isEmpty()){
             vertice = fila.poll();
             aux=filaTree.poll();
+
             Iterator<Integer> i = listaAdj[vertice].listIterator();
             while(i.hasNext()){
                 int prox = i.next();
@@ -43,6 +44,7 @@ public class BuscaEmLargura {
                     fila.add(prox);
                     next= new No(prox);
                     filaTree.add(next);
+                    next.setAnterior(aux);
                     aux.addFilho(next);
                 }
 
