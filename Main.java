@@ -25,7 +25,7 @@ import java.io.File;
 
 public class Main{
     public static void main(String argc[]) throws IOException{
-        int N=6;
+        int N=95;
         //CRIAR MATRIZ E PEGAR VALOR*
         int matAdj[][]=new int[N][N];
         Scanner sc=new Scanner(System.in);
@@ -82,7 +82,7 @@ public class Main{
         bel.bfs(tree);
         tree.percorrerArvore(tree.getverticeIncial(0));
         MenorCaminho retorno= new MenorCaminho(tree);
-        int fim=4;
+        int fim=18;
         System.out.println("Menor Caminho para "+fim+":");
         ArrayList<Integer> percurso=retorno.calcular(0,fim);
 
